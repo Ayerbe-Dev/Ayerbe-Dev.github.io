@@ -1,0 +1,108 @@
+body {
+    background-color:khaki;
+}
+
+a {
+    text-decoration:none
+}
+
+ul.horizontal-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+.headerbar {
+    position: fixed;
+    top: 0;
+    left: 2;
+}
+
+.headerelt {
+    padding-top: 42px;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 125px; 
+    border: 3.5px solid #000000;
+    background-color: rgb(255, 178, 16);
+    font-size: 32px; 
+    font-weight: 700; 
+    text-align: center; 
+    box-sizing: border-box;
+}
+
+/*TODO: This hover also applies to hovering over the search bar (gross) and does not apply to hovering
+over the shopping cart (also gross). Fixing the former is probably reasonably straightforward, fixing
+the latter is not going to happen by the time I turn this in.*/
+
+.headerelt:hover {
+    background-color: yellow;
+}
+
+.headerform {
+    float: right;
+    width: 262px;
+    height: 42px; 
+    border: 3px solid #000000;
+    font-size: 32px; 
+    font-weight: 700; 
+    text-align: top; 
+    box-sizing: border-box;
+}
+
+.tab {
+    width: 240px; 
+    height: 40px; 
+    border: 3px solid #000000;
+    background-color: rgb(255, 191, 0);
+    font-size: 28px; 
+    font-weight: 700; 
+    text-align: center; 
+    box-sizing: border-box;
+}
+
+.restaurant{
+    width: 240px;
+    height: 120px;
+    border: 3px solid #000000;
+    background-color: white;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.footerbar {
+    position: fixed;
+    bottom: 0;
+    left: 2;
+    width: 100vw;
+    border: 3px solid #000000;
+    background-color: rgb(255, 178, 16);
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.footerbar:hover{
+    background-color: yellow;
+}
+
+.centerimg {
+    display: block;
+    margin-top: 125px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centerform {
+    text-align: center;
+}
+
+.miscmsg {
+    font-size: 28px; 
+    font-weight: 700;
+    text-align: center;
+}
