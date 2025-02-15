@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment 3</title>
+</head>
+<body>
+    <ul id="receipt">
+        <li id="receiptNum">Receipt #0</li>
+        <li id="numDogs">Hotdogs x0: </li>
+        <li id="numFries">Fries x0: </li>
+        <li id="numSoda">Drinks x0: </li>
+        <li id="subtotal">Subtotal: </li>
+    </ul>
+
+<script>
+    const price_hotdog = 4.99;
+    const price_fries = 3.99;
+    const price_drinks = 1.79;
+
+
+    var numDogs = parseInt(prompt("Welcome to Joe's Hotdogs! How many hotdogs do you want? ($4.99 each)"));
+    var numFries = parseInt(prompt("How many fries? ($3.99 each)"));
+    var numSoda = parseInt(prompt("How many drinks? ($1.79 each)"));
+
+    var subtotal = parseFloat(price_hotdog * numDogs + price_fries * numFries + price_drinks * numSoda);
+
+    document.getElementById("receiptNum").innerText = "Receipt #" + Math.floor(Math.random() * 9999);
+    document.getElementById("numDogs").innerText = "Hotdogs x" + numDogs + ": $" + showMoney(numDogs * price_hotdog);
+    document.getElementById("numFries").innerText = "Fries x" + numFries + ": $" + showMoney(numFries * price_fries);
+    document.getElementById("numSoda").innerText = "Drinks x" + numSoda + ": $" + showMoney(numSoda * price_drinks);
+    document.getElementById("subtotal").innerText = "Subtotal: $" + showMoney(subtotal);
+
+    var total = subtotal;
+    if (subtotal >= 30) {
+        var discount = showMoney(subtotal * 0.1);
+        total -= parseFloat(discount);
+        addListEntry("DISCOUNT APPLIED: JOE'S $30 DEAL: -$" + discount);
+    }
+    var tax = showMoney(total * 0.0625);
+    addListEntry("Tax: $" + tax);
+
+    total += parseFloat(tax);
+
+    addListEntry("Total: $" + showMoney(total));
+
+    function addListEntry(msg) {
+        const message = document.createElement("li");
+        const textNode = document.createTextNode(msg);
+        message.appendChild(textNode);
+        document.getElementById("receipt").appendChild(message);
+    }
+
+    function showMoney(money) {
+        var ret = (Math.round((money + Number.EPSILON) * 100) / 100).toString();
+        if (ret.indexOf('.') === -1) {
+            ret += '.00';
+        }
+        else if (ret.split('.')[1].length === 1) {
+            ret += '0';
+        }
+        return ret;
+    }
+
+    
+</script>
+</body>
