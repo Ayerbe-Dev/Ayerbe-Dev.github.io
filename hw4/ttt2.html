@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Part 2</title>
+    <style type = "text/css">
+        span.p1 {
+            color:red;
+        }
+        span.p2 {
+            color:blue;
+        }
+        div.message {
+            max-width: 335px;
+            padding: 5px;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+            font-size:25px;
+        }
+        div.board {
+            /*Setting the padding to 5px also changes the max-width we need for
+            things to look right*/
+            max-width: 335px;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            padding: 5px;
+        }
+        div.square {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            display:inline-block;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+            line-height: 100px;
+            font-family:Arial;
+            font-size:75px;
+            cursor:default;
+        }
+        div.square:hover{
+            background-color: yellow;
+        }
+        h1.title {
+            max-width: 335px;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class = "title">Tic-Tac-Toe!</h1>
+    <div class = "message">
+        It is <span class="p1">X</span>'s turn!
+    </div>
+    <div class = "board">
+    <script>
+        const NUM_SQUARES = 9;
+        for (i=0; i<NUM_SQUARES; i++) {
+            id = "sq"+i;
+            document.write( "<div class='square' id='" + id + "'></div>" );
+        }
+    </script>
+    </div>
+    <div class = "message">Get three in a row to win!</div>
+    <script>
+        for (i = 0; i < NUM_SQUARES; i++) {
+            //Fixing the alignment issue mentioned in part 1, this time in JS
+            document.getElementById("sq" + i).innerHTML = "&nbsp;";
+        }
+        document.getElementById("sq2").innerHTML = "<span class = 'p1'>X</span>";
+        document.getElementById("sq3").innerHTML = "<span class = 'p2'>O</span>";
+    </script>
+</body>
+</html>

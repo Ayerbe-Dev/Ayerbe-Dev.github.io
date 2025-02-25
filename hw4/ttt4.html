@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Part 4</title>
+    <style type = "text/css">
+        span.p1 {
+            color:red;
+        }
+        span.p2 {
+            color:blue;
+        }
+        div.message {
+            max-width: 335px;
+            padding: 5px;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+            font-size:25px;
+        }
+        div.board {
+            /*Setting the padding to 5px also changes the max-width we need for
+            things to look right*/
+            max-width: 335px;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            padding: 5px;
+        }
+        div.square {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            display:inline-block;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+            line-height: 100px;
+            font-family:Arial;
+            font-size:75px;
+            cursor:default;
+            
+        }
+        div.square:hover{
+            background-color: yellow;
+        }
+        h1.title {
+            max-width: 335px;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class = "title">Tic-Tac-Toe!</h1>
+    <div class = "message" id = "currturn">
+        The game has not started yet.
+    </div>
+    <div class = "board">
+    <script>
+        const NUM_SQUARES = 9;
+        for (i=0; i<NUM_SQUARES; i++) {
+            id = "sq"+i;
+            document.write( "<div class='square' id='" + id + "'></div>" );
+        }
+        var turn = -1; //Since the game hasn't started yet, this doesn't need to be randomized yet
+        const squareClicked = function() {
+            if (turn === -1) return;
+            if (this.innerHTML === "&nbsp;") {
+                var turnstring = "";
+                if (turn) {
+                    this.innerHTML = "<span class = 'p1'>X</span>";
+                    turnstring = "It is <span class = 'p2'>O</span>'s turn!";
+                }
+                else {
+                    this.innerHTML = "<span class = 'p2'>O</span>";
+                    turnstring = "It is <span class = 'p1'>X</span>'s turn!";
+                }
+                turn = Number(!turn);
+                var moves = [];
+                var winconditions = [];
+                //this feels unnecessarily elaborate ngl
+                document.querySelectorAll("div.square").forEach(function(div) {
+                    var id = Number(div.id[2]);
+                    switch (div.innerText){
+                        case "X":
+                        case "O":
+                            moves.push(div.innerText);
+                        break;
+                        default: 
+                            moves.push("-");
+                        break;
+                    }
+                });
+                //Horizontals
+                winconditions.push(moves.slice(0, 3).join("").toString());
+                winconditions.push(moves.slice(3, 6).join("").toString());
+                winconditions.push(moves.slice(6, 9).join("").toString());
+                //Verticals
+                winconditions.push(moves.filter(function(value, index, Arr) { return index % 3 == 0; }).join("").toString());
+                winconditions.push(moves.filter(function(value, index, Arr) { return index % 3 == 1; }).join("").toString());
+                winconditions.push(moves.filter(function(value, index, Arr) { return index % 3 == 2; }).join("").toString());
+                //Diagonals
+                winconditions.push(moves[0] + moves[4] + moves[8]);
+                winconditions.push(moves[2] + moves[4] + moves[6]);
+
+                var stalemate = true;
+                winconditions.forEach(function(con) {
+                    switch (con) {
+                        case "XXX":
+                            turnstring = "<span class = 'p1'>X</span> wins!";
+                            turn = -1;
+                            stalemate = false;
+                        break;
+                        case "OOO":
+                            turnstring = "<span class = 'p2'>O</span> wins!";
+                            turn = -1;
+                            stalemate = false;
+                        break;
+                        default:
+                            if (con.includes("-")) {
+                                stalemate = false;
+                            }
+                        break;
+                    }
+                });
+                if (stalemate) {
+                    turnstring = "Stalemate, try again!"
+                    turn = -1;
+                }
+                document.getElementById("currturn").innerHTML = turnstring;
+            }
+        }
+        for (i = 0; i < NUM_SQUARES; i++) {
+            document.getElementById("sq" + i).onclick = squareClicked;
+        }
+        function startButtonClicked() {
+            for (i = 0; i < NUM_SQUARES; i++) {
+                document.getElementById("sq" + i).innerHTML = "&nbsp;";
+            }
+            //The following code randomly sets turn to either true or false,
+            //casts to a number, then uses the result in a ternary operation to
+            //decide what text to display
+            document.getElementById("currturn").innerHTML = "It is <span class = 'p"
+                + ((turn=Number(Math.random() < 0.5)) ? "1'>X":"2'>O")
+                + "</span>'s turn!";
+        }
+    </script>
+    </div>
+    <div class = "message" id = "wincon">Get three in a row to win!</div>
+    <button onclick = "startButtonClicked()">Start Game</button>
+</body>
+</html>

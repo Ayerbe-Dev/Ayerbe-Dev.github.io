@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Part 1</title>
+    <style type = "text/css">
+        /*A quick board class, basically just forces the divs to all fit on a 3x3 grid. 
+        A max width of 342 or lower makes it so we can't fit 3 boxes*/
+        div.board {
+            max-width: 343px;
+            max-height: 343px;
+        }
+        /*A little more going on with the boxes but basically it's a 100x100 shape with
+        a margin of 5 that gets displayed as a block allowing them to be side by side.*/
+        div.box {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            display:inline-block;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+            line-height: 100px;
+            font-family:Arial;
+            font-size:75px;
+            cursor:default;/*Prevents the cursor from letting you try to copy the X and Os as text*/
+        }
+        div.box:hover{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class = "board">
+        <!--For whatever reason, divs that are completely empty will get aligned differently than
+        divs that aren't, so all "empty" divs get a space put into them for consistency -->
+        <div class = "box">X</div> 
+        <div class = "box">&nbsp;</div>
+        <div class = "box">O</div>
+        <div class = "box">&nbsp;</div>
+        <div class = "box">&nbsp;</div>
+        <div class = "box">&nbsp;</div>
+        <div class = "box">O</div>
+        <div class = "box">&nbsp;</div>
+        <div class = "box">&nbsp;</div>
+    </div>
+</body>
+</html>

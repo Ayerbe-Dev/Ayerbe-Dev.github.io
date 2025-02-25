@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Part 3</title>
+    <style type = "text/css">
+        span.p1 {
+            color:red;
+        }
+        span.p2 {
+            color:blue;
+        }
+        div.message {
+            max-width: 335px;
+            padding: 5px;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+            font-size:25px;
+        }
+        div.board {
+            /*Setting the padding to 5px also changes the max-width we need for
+            things to look right*/
+            max-width: 335px;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            padding: 5px;
+        }
+        div.square {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            display:inline-block;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+            line-height: 100px;
+            font-family:Arial;
+            font-size:75px;
+            cursor:default;
+            
+        }
+        div.square:hover{
+            background-color: yellow;
+        }
+        h1.title {
+            max-width: 335px;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class = "title">Tic-Tac-Toe!</h1>
+    <div class = "message" id = "currturn">
+        The game has not started yet.
+    </div>
+    <div class = "board">
+    <script>
+        const NUM_SQUARES = 9;
+        for (i=0; i<NUM_SQUARES; i++) {
+            id = "sq"+i;
+            document.write( "<div class='square' id='" + id + "'></div>" );
+        }
+        var p1_turn = false; //Since the game hasn't started yet, this doesn't need to be randomized yet
+        const squareClicked = function() {
+            if (this.innerHTML === "&nbsp;") {
+                if (p1_turn) {
+                    this.innerHTML = "<span class = 'p1'>X</span>";
+                    alert("X");
+                    document.getElementById("currturn").innerHTML = "It is <span class = 'p2'>O</span>'s turn!";
+                }
+                else {
+                    this.innerHTML = "<span class = 'p2'>O</span>";
+                    alert("O");
+                    document.getElementById("currturn").innerHTML = "It is <span class = 'p1'>X</span>'s turn!";
+                }
+                p1_turn = !p1_turn;
+            }
+        }
+        for (i = 0; i < NUM_SQUARES; i++) {
+            document.getElementById("sq" + i).onclick = squareClicked;
+        }
+        function startButtonClicked() {
+            for (i = 0; i < NUM_SQUARES; i++) {
+                document.getElementById("sq" + i).innerHTML = "&nbsp;";
+            }
+            //The following code randomly sets p1_turn to either true or false, 
+            //then uses the result in a ternary operation to decide what text to display
+            document.getElementById("currturn").innerHTML = "It is <span class = 'p"
+                + ((p1_turn=Math.random() < 0.5) ? "1'>X":"2'>O")
+                + "</span>'s turn!";
+        }
+    </script>
+    </div>
+    <div class = "message" id = "wincon">Get three in a row to win!</div>
+    <button onclick = "startButtonClicked()">Start Game</button>
+</body>
+</html>
