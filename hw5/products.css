@@ -1,0 +1,7 @@
+name, desc, price, cat { 
+    display : block; 
+} 
+name { 
+    font-size : 25px; 
+    font-weight : bold; 
+} 

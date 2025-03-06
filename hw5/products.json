@@ -1,0 +1,52 @@
+{
+	"products" : [
+		{
+			"name" : "I Heart NY Hat",
+			"desc" : "A hat that says 'I heart NY' on it.",
+			"price" : "$15",
+			"cat" : ["Clothing", "Tourist"]
+		},
+		{
+			"name" : "T-shirt",
+			"desc" : "A red T-shirt",
+			"price" : "$50",
+			"cat" : "Clothing"
+		},
+		{
+			"name" : "License Plate",
+			"desc" : "A license plate with a custom decal",
+			"price" : "$200",
+			"cat" : "Tourist"
+		},
+		{
+			"name" : "Laptop",
+			"desc" : "A high-end laptop.",
+			"price" : "$1400",
+			"cat" : ["Entertainment", "Business"]
+		},
+		{
+			"name" : "Suit",
+			"desc" : "A standard dress shirt and jacket.",
+			"price" : "$150",
+			"cat" : ["Clothing", "Business"]
+		},
+		{
+			"name" : "TV",
+			"desc" : "A flat-screen TV.",
+			"price" : "$1400",
+			"cat" : "Entertainment"
+		},
+		{
+			"name" : "Coffee",
+			"desc" : "A standard cup of coffee.",
+			"price" : "$8",
+			"cat" : "Food"
+		},
+		{
+			"name" : "Egg",
+			"desc" : "A single egg.",
+			"price" : "$999",
+			"cat" : "Food"
+		}
+	]
+}

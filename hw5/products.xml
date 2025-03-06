@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<?xml-stylesheet type="text/css" href="products.css"?> 
+<products>
+<product>
+	<name>I Heart NY Hat</name>
+	<desc>A hat that says "I heart NY" on it.</desc>
+	<price>$15</price>
+	<cat>
+		<c1>Clothing</c1>
+		<c2>Tourist</c2>
+	</cat>
+</product>
+<product>
+	<name>T-shirt</name>
+	<desc>A red T-shirt</desc>
+	<price>$50</price>
+	<cat>Clothing</cat>
+</product>
+<product>
+	<name>License Plate</name>
+	<desc>A license plate with a custom decal</desc>
+	<price>$200</price>
+	<cat>Tourist</cat>
+</product>
+<product>
+	<name>Laptop</name>
+	<desc>A high-end laptop.</desc>
+	<price>$1400</price>
+	<cat>
+		<c1>Entertainment</c1>
+		<c2>Business</c2>
+	</cat>
+</product>
+<product>
+	<name>Suit</name>
+	<desc>A standard dress shirt and jacket.</desc>
+	<price>$150</price>
+	<cat>
+		<c1>Clothing</c1>
+		<c2>Business</c2>	
+	</cat>
+</product>
+<product>
+	<name>TV</name>
+	<desc>A flat-screen TV.</desc>
+	<price>$1400</price>
+	<cat>Entertainment</cat>
+</product>
+<product>
+	<name>Coffee</name>
+	<desc>A standard cup of coffee.</desc>
+	<price>$8</price>
+	<cat>Food</cat>
+</product>
+<product>
+	<name>Egg</name>
+	<desc>A single egg.</desc>
+	<price>$999</price>
+	<cat>Food</cat>
+</product>
+</products>
