@@ -10,13 +10,13 @@
 			"name" : "T-shirt",
 			"desc" : "A red T-shirt.",
 			"price" : "$50",
-			"cat" : ["Clothing"]
+			"cat" : "Clothing"
 		},
 		{
 			"name" : "NY License Plate",
 			"desc" : "A license plate with a custom decal.",
 			"price" : "$200",
-			"cat" : ["Tourist"]
+			"cat" : "Tourist"
 		},
 		{
 			"name" : "Laptop",
@@ -34,19 +34,19 @@
 			"name" : "TV",
 			"desc" : "A flat-screen TV.",
 			"price" : "$1400",
-			"cat" : ["Entertainment"]
+			"cat" : "Entertainment"
 		},
 		{
 			"name" : "Coffee",
 			"desc" : "A standard cup of coffee.",
 			"price" : "$8",
-			"cat" : ["Food"]
+			"cat" : "Food"
 		},
 		{
 			"name" : "Egg",
 			"desc" : "A single egg.",
 			"price" : "$999",
-			"cat" : ["Food"]
+			"cat" : "Food"
 		}
 	]
 }

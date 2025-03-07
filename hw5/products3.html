@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>HW5 - Products 2</title>
-    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="products2.css">
     <script 
         src="https://code.jquery.com/jquery-3.1.1.min.js"   
 	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   
@@ -29,22 +29,29 @@
                     str += "<div class = 'price'> Price: " + product.price + "</div>";
                     str += "<div class = 'cat'> Categories: " + product.cat + "</div>";
                 str += "</div>";
-                for (cat of product.cat) {
-                    if (!categories.includes(cat)) {
-                        categories.push(cat);
+                //For items which fall into multiple categories, loop through them all to populate the select
+                if (product.cat instanceof Array) {
+                    for (cat of product.cat) {
+                        if (!categories.includes(cat)) {
+                            categories.push(cat);
+                        }
                     }
                 }
+                else if (!categories.includes(product.cat)) {
+                    //For items that only have one category, that's all we need to add
+                    categories.push(product.cat);
+                }
             });
-            
-            document.getElementById("result").innerHTML = str;
-            categories.forEach(function(cat) {
+            categories.forEach(function(cat) { //Add each entry from our categories list to the select filter
                 let optionHTML = "<option value='" + cat + "'>" + cat + "</option>";
                 $('#filter').append(optionHTML);
             });
+            
+            document.getElementById("result").innerHTML = str; //By default, show all entries
         })
 
         function showFilteredProducts() {
-            selected_cat = $("#filter:selected").val();
+            selected_cat = $("#filter").find(":selected").val();
             str = "";
             console.log(selected_cat);
             JSON["products"].forEach(function(product) {

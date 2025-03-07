@@ -1,13 +1,7 @@
-div.product {
-    display : block;
-    margin : 25px;
-}
-
-div.desc, div.price, div.cat { 
+desc, price, cat { 
     display : block; 
 } 
-
-div.name { 
+name { 
     display: block;
     font-size : 25px; 
     font-weight : bold; 

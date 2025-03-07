@@ -1,0 +1,14 @@
+div.product {
+    display : block;
+    margin : 25px;
+}
+
+div.desc, div.price, div.cat { 
+    display : block; 
+} 
+
+div.name { 
+    display: block;
+    font-size : 25px; 
+    font-weight : bold; 
+} 
