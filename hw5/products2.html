@@ -2,17 +2,33 @@
 <html>
 <head>
     <title>HW5 - Products 2</title>
+    <link rel="stylesheet" href="products.css">
+    <script 
+        src="https://code.jquery.com/jquery-3.1.1.min.js"   
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   
+	    crossorigin="anonymous">
+    </script>
 </head>
 <body>
-    <script>
-    $.get( "https://ayerbe-dev.github.io/hw5/products.json", 
-    function( data ) {
-        str = JSON.stringify(data);
-        console.log(str);
-    })
-
-   strProducts = JSON.stringify(products);
-   document.write(strProducts);
+    <div id="result">&nbsp;</div>
+    <button onclick = "loadProducts()">Load Products</button>
+    <script language="javascript">
+        function loadProducts() {
+            $.get( "https://ayerbe-dev.github.io/hw5/products.json", 
+            function( data ) {
+                str = "";                
+                data["products"].forEach(function(product) {
+                    str += "<div class = 'product'>";
+                        str += "<div class = 'name'>" + product.name + "</div>";
+                        str += "<div class = 'desc'>" + product.desc + "</div>";
+                        str += "<div class = 'price'> Price: " + product.price + "</div>";
+                        str += "<div class = 'cat'> Categories: " + product.cat + "</div>";
+                    str += "</div>";
+                });
+                
+                document.getElementById("result").innerHTML = str;
+            })
+        }
 
     </script>
 </body>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HW5 - Products 2</title>
+    <link rel="stylesheet" href="products.css">
+    <script 
+        src="https://code.jquery.com/jquery-3.1.1.min.js"   
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   
+	    crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <div id="result">&nbsp;</div>
+    <select id = "filter">
+        <option value = "all">All Categories</option>
+    </select>
+    <button onclick = "showFilteredProducts()">Filter</button>
+    <script language="javascript">
+        let JSON;
+        $.get( "https://ayerbe-dev.github.io/hw5/products.json", 
+        function( data ) {
+            JSON = data;
+            str = "";
+            categories = [];
+            data["products"].forEach(function(product) {
+                str += "<div class = 'product'>";
+                    str += "<div class = 'name'>" + product.name + "</div>";
+                    str += "<div class = 'desc'>" + product.desc + "</div>";
+                    str += "<div class = 'price'> Price: " + product.price + "</div>";
+                    str += "<div class = 'cat'> Categories: " + product.cat + "</div>";
+                str += "</div>";
+                for (cat of product.cat) {
+                    if (!categories.includes(cat)) {
+                        categories.push(cat);
+                    }
+                }
+            });
+            
+            document.getElementById("result").innerHTML = str;
+            categories.forEach(function(cat) {
+                let optionHTML = "<option value='" + cat + "'>" + cat + "</option>";
+                $('#filter').append(optionHTML);
+            });
+        })
+
+        function showFilteredProducts() {
+            selected_cat = $("#filter:selected").val();
+            str = "";
+            console.log(selected_cat);
+            JSON["products"].forEach(function(product) {
+                if (selected_cat == "all" 
+                ||  product.cat.includes(selected_cat)) {
+                    str += "<div class = 'product'>";
+                        str += "<div class = 'name'>" + product.name + "</div>";
+                        str += "<div class = 'desc'>" + product.desc + "</div>";
+                        str += "<div class = 'price'> Price: " + product.price + "</div>";
+                        str += "<div class = 'cat'> Categories: " + product.cat + "</div>";
+                    str += "</div>";
+                }
+            });
+            document.getElementById("result").innerHTML = str;
+        }
+
+    </script>
+</body>
