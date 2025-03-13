@@ -10,11 +10,21 @@
     </script>
 </head>
 <body>
-    <div class = "search">
+    <div class = "center">
         <input type="text" id = "search_bar"/>
-        <button onclick = "requestWord()" id = "search_button">Search for word</button>
+        <button onclick = "requestWord()" id = "search_button">Search for a word</button>
     </div>
     <div id = "dict_output"></div>
+    <div class = "center">
+        This page makes searches to the the <a src = "https://dictionaryapi.dev/">
+        FreeDictionary</a> API (which I found on GitHub) in order to display 
+        information about a given word. I chose this because I felt like it would
+        provide a lot of information that would be very intuitive to format. The
+        only parameter that I needed to provide to this API was the word that I 
+        wanted definitions for. This API would be really helpful in cases where 
+        you want to know what a word means and also don't want to Google it
+        directly.
+    </div>
     <script>
         //Makes it so hitting enter while typing in the search bar is 
         //equivalent to clicking the search button
@@ -67,6 +77,7 @@
                 str += "<h2>" + word_data["message"] + "</h2>";
                 str += word_data["resolution"];
             }
+            
             document.getElementById("dict_output").innerHTML = str;
         }
     </script>
