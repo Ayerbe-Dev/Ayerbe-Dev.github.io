@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HW6 - API Fun</title>
+    <link rel="stylesheet" href="styles.css">
+    <script 
+        src="https://code.jquery.com/jquery-3.1.1.min.js"   
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   
+	    crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <div class = "search">
+        <input type="text" id = "search_bar"/>
+        <button onclick = "requestWord()" id = "search_button">Search for word</button>
+    </div>
+    <div id = "dict_output"></div>
+    <script>
+        //Makes it so hitting enter while typing in the search bar is 
+        //equivalent to clicking the search button
+        $("#search_bar").keyup(function(event){
+            if(event.keyCode == 13){
+                $("#search_button").click();
+            }
+        });
+
+        //Uses AJAX to send a GET request to our api, then calls populate()
+        //when the request is complete
+        function requestWord() {   
+            var word = document.getElementById("search_bar").value;
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function() {
+                if(req.readyState == 4){
+                    populate(JSON.parse(req.responseText));
+                }
+            }
+            req.open("GET", "https://api.dictionaryapi.dev/api/v2/entries/en/" + word, true);
+            req.send();
+        }
+
+        //Fills in our output div with the data we got from the API, which may
+        //or may not be an error message.
+        function populate(word_data) {
+            str = "";
+            if (word_data instanceof Array) {
+                //Loop through each possible definition of the word for each 
+                //possible part of speech
+                for (word of word_data) {
+                    str += "<h1>" + word["word"] + "</h1>";
+                    str += "<h2>" + word["phonetic"] + "</h2>";
+                    str += "<ul>";
+                    for (mean of word["meanings"]) {
+                        str += "<li>" + mean["partOfSpeech"];
+                        str += "<ol>";
+                            for (def of mean["definitions"]) {
+                                str += "<li>" + def["definition"] + "</li>";
+                            }
+                        str += "</ol>";
+                    }
+                    str += "</ul>";
+                }
+            }
+            else {
+                //The only time the data is not expressed as an array is when
+                //the data is actually an error message
+                str += "<h1>" + word_data["title"] + "</h1>";
+                str += "<h2>" + word_data["message"] + "</h2>";
+                str += word_data["resolution"];
+            }
+            document.getElementById("dict_output").innerHTML = str;
+        }
+    </script>
+</body>
