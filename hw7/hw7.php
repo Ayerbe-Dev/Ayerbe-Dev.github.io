@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<head>
+    <title>Hw7 - PHP Practice</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Times Table Testing</h1>
+    <form method='get' action = 'times.php'>
+        <input type="text" name = "n"/>
+    </form>
+</body>
