@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    Enter Company Name or Stock Ticker Symbol:<br/><br/>
+    <form method = 'get' action = 'http://localhost:8080/process'>
+        <input type = "text" name = "stock"/>
+        <br/>
+        <input type = "radio" name = "texttype" value = "SYM" id = "Symbol">
+        <label for = "Symbol">Stock Ticker Symbol</label>
+        <br/>
+        <input type = "radio" name = "texttype" value = "COM" id = "Company">
+        <label for = "Company">Company Name</label>
+        <br/>
+        <input type="submit" value="Submit">
+    </form>
+</body>
